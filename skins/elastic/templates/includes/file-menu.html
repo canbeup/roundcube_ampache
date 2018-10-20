@@ -1,0 +1,92 @@
+<ul class="toolbar listing iconized" id="toolbar-menu" aria-hidden="true">
+	<li role="menuitem">
+		<a class="button compose hidden" title="Create a new message" id="rcmbtn109" role="button" href="./?_task=worldesk&amp;_action=compose" onclick="return rcmail.command('compose','',this,event)"><span class="inner">Compose</span></a>
+	</li>
+	<li role="menuitem">
+		<a class="button save disabled" title="Save File" data-content-button="true" id="rcmbtn110" role="button" tabindex="-1" aria-disabled="true" href="#" onclick="return rcmail.command('reply','',this,event)">
+			<span class="inner">Save</span>
+		</a>
+	</li>
+	<li role="menuitem">
+		<a class="button macro disabled" title="Active Macro" data-content-button="true" id="rcmbtn110" role="button" tabindex="-1" aria-disabled="true" href="#" onclick="return rcmail.command('reply','',this,event)">
+			<span class="inner">Macro</span>
+		</a>
+	</li>
+	<li role="menuitem">
+		<a class="button delete disabled" title="Delete message" id="rcmbtn113" role="button" tabindex="-1" aria-disabled="true" href="#" onclick="return rcmail.command('delete','',this,event)"><span class="inner">Delete</span></a>
+	</li>
+	<li role="menuitem" class="spacer"></li>
+	<li role="menuitem">
+		<span class="dropbutton"><a class="button reply-all disabled" title="Reply to list or to sender and all recipients" id="rcmbtn111" role="button" tabindex="-1" aria-disabled="true" href="#" onclick="return rcmail.command('reply-all','',this,event)"><span class="inner">Reply all</span></a><a href="#reply-all" id="replyallmenulink" class="button dropdown" data-popup="replyall-menu" tabindex="0" aria-haspopup="true" aria-expanded="false" aria-owns="replyall-menu" data-original-title="" title="">
+			<span class="inner">Reply-all options</span>
+			</a>
+		</span>
+	</li>
+	<li role="menuitem">
+		<span class="dropbutton"><a class="button forward disabled" title="Forward the message" id="rcmbtn112" role="button" tabindex="-1" aria-disabled="true" href="#" onclick="return rcmail.command('forward','',this,event)"><span class="inner">Forward</span></a><a href="#forward" id="forwardmenulink" class="button dropdown" data-popup="forward-menu" tabindex="0" aria-haspopup="true" aria-expanded="false" aria-owns="forward-menu" data-original-title="" title="">
+			<span class="inner">Forwarding options</span>
+			</a>
+		</span>
+	</li>
+	<li role="menuitem">
+		<a id="markmessagemenulink" class="button markmessage" title="Mark messages" data-popup="markmessage-menu" role="button" href="#" aria-haspopup="true" aria-expanded="false" aria-owns="markmessage-menu" data-original-title="Mark messages"><span class="inner">Mark</span></a>
+	</li>
+	<li role="menuitem">
+		<a id="messagemenulink" class="button more" title="More actions..." data-popup="message-menu" role="button" href="#" aria-haspopup="true" aria-expanded="false" aria-owns="message-menu" data-original-title="More actions..."><span class="inner">More</span></a>
+	</li>
+	<li role="menuitem">
+		<a aria-haspopup="true" aria-expanded="false" aria-owns="listselect-menu" data-original-title="" title="" id="1539813489651-clone" href="#" class="button select active hidden-big hidden-large"><span class="inner">Select</span></a>
+	</li>
+</ul>
+
+<div id="forward-menu" class="popupmenu">
+	<h3 id="aria-label-forward-menu" class="voice"><roundcube:label name="arialabelforwardingoptions" /></h3>
+	<ul class="toolbarmenu listing" role="menu" aria-labelledby="aria-label-forward-menu">
+		<roundcube:button type="link-menuitem" command="forward-inline" label="forwardinline" prop="sub" class="forward inline" classAct="forward inline active" />
+		<roundcube:button type="link-menuitem" command="forward-attachment" label="forwardattachment" prop="sub" class="forward attachment" classAct="forward attachment active" />
+		<roundcube:button type="link-menuitem" command="bounce" label="bouncemsg" class="forward bounce" classAct="forward bounce active" />
+		<roundcube:container name="forwardmenu" id="forward-menu" />
+	</ul>
+</div>
+
+<div id="replyall-menu" class="popupmenu">
+	<h3 id="aria-label-replyall-menu" class="voice"><roundcube:label name="arialabelreplyalloptions" /></h3>
+	<ul class="toolbarmenu listing" role="menu" aria-labelledby="aria-label-replyall-menu">
+		<roundcube:button type="link-menuitem" command="reply-all" label="replyall" prop="sub" class="reply all" classAct="reply all active" />
+		<roundcube:button type="link-menuitem" command="reply-list" label="replylist" prop="sub" class="reply list" classAct="reply list active" />
+		<roundcube:container name="replyallmenu" id="replyall-menu" />
+	</ul>
+</div>
+
+<div id="message-menu" class="popupmenu">
+	<h3 id="aria-label-message-menu" class="voice"><roundcube:label name="arialabelmoremessageactions" /></h3>
+	<ul class="toolbarmenu listing" role="menu" aria-labelledby="aria-label-message-menu">
+		<roundcube:button type="link-menuitem" command="print" label="printmessage" class="print" classAct="print active" data-hidden="small"/>
+		<roundcube:if condition="template:name != 'message'" />
+			<roundcube:button type="link-menuitem" command="import-messages" label="import" class="import" classAct="import active"
+				name="messageimport" onclick="UI.import_dialog()" />
+		<roundcube:endif />
+		<roundcube:button type="link-menuitem" command="download" label="export" class="download" classAct="download active" />
+		<roundcube:button type="link-menuitem" command="edit" prop="new" label="editasnew" class="edit asnew" classAct="edit asnew active" />
+		<roundcube:button type="link-menuitem" command="viewsource" label="viewsource" class="source" classAct="source active" />
+		<roundcube:button type="link-menuitem" command="move" label="moveto" class="move" classAct="move active" innerclass="folder-selector-link" aria-haspopup="true" />
+		<roundcube:button type="link-menuitem" command="copy" label="copyto" class="copy" classAct="copy active" innerclass="folder-selector-link" aria-haspopup="true" />
+		<roundcube:button type="link-menuitem" command="open" label="openinextwin" target="_blank" class="extwin" classAct="extwin active" data-hidden="small" />
+		<roundcube:container name="messagemenu" id="message-menu" />
+	</ul>
+</div>
+
+<div id="markmessage-menu" class="popupmenu">
+	<h3 id="aria-label-markmessage-menu" class="voice"><roundcube:label name="arialabelmarkmessagesas" /></h3>
+	<ul class="toolbarmenu listing" role="menu" aria-labelledby="aria-label-markmessage-menu">
+		<roundcube:button type="link-menuitem" command="mark" prop="read" label="markread" classAct="read active" class="read" />
+		<roundcube:button type="link-menuitem" command="mark" prop="unread" label="markunread" classAct="unread active" class="unread" />
+		<roundcube:button type="link-menuitem" command="mark" prop="flagged" label="markflagged" classAct="flag active" class="flag" />
+		<roundcube:button type="link-menuitem" command="mark" prop="unflagged" label="markunflagged" classAct="unflag active" class="unflag" />
+		<roundcube:container name="markmenu" id="markmessage-menu" />
+	</ul>
+</div>
+
+<roundcube:if condition="template:name != 'message'" />
+	<roundcube:object name="messageimportform" id="uploadform" class="popupmenu formcontent" buttons="no" />
+<roundcube:endif />
