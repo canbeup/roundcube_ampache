@@ -42,11 +42,53 @@ var ampache = {
 			$('#ampSNG' + locStore.get('ampache.player.last.id')).addClass('unread');
 			$('#ampSNG' + locStore.get('ampache.player.last.id')).addClass('selected');
 			$('#currentArtwork').attr('src', $('#ampSNG' + locStore.get('ampache.player.last.id')).data('art'));
+		},
+	},
+	getAverageRGB: function(imgEl){
+		var blockSize = 5,
+			defaultRGB = {r:0,g:0,b:0},
+			canvas = document.createElement('canvas'),
+			context = canvas.getContext && canvas.getContext('2d'),
+			data, width, height,
+			i = -4,
+			length,
+			rgb = {r:0,g:0,b:0},
+			count = 0;
+		if(!context){
+			alert(1);
+			$(canvas).remove();
+			return defaultRGB;
 		}
+		height = canvas.height = imgEl.naturalHeight || imgEl.offsetHeight || imgEl.height;
+		width = canvas.width = imgEl.naturalWidth || imgEl.offsetWidth || imgEl.width;
+		context.drawImage(imgEl, 0, 0);
+		try{
+			data = context.getImageData(0, 0, width, height);
+		}catch(e){
+			alert(e);
+			$(canvas).remove();
+			return defaultRGB;
+		}
+		length = data.data.length;
+		while((i += blockSize * 4) < length){
+			++count;
+			rgb.r += data.data[i];
+			rgb.g += data.data[i+1];
+			rgb.b += data.data[i+2];
+		}
+		rgb.r = ~~(rgb.r/count);
+		rgb.g = ~~(rgb.g/count);
+		rgb.b = ~~(rgb.b/count);
+		$(canvas).remove();
+		return rgb;
 	}
 };
 
 $(function(){
 	ampache.load.folder(locStore.get('ampache.last.folder'));
 	if(locStore.get('ampache.last.type')!==null) ampache.load.songs(locStore.get('ampache.last.type'), locStore.get('ampache.last.filter'), locStore.get('ampache.last.start'), locStore.get('ampache.last.step'));
+	$('#currentArtwork').on('load', function(){
+		var rgb = ampache.getAverageRGB(document.getElementById('currentArtwork'));
+		$('.content .iframe-wrapper').css('background-color', 'rgb('+rgb.r+','+rgb.g+','+rgb.b+')');
+	});
 });

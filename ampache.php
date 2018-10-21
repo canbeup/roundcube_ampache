@@ -28,6 +28,7 @@ class ampache extends rcube_plugin
 		$this->register_action('getFolder', array($this, 'getFolder'));
 		$this->register_action('getFeeds', array($this, 'getFeeds'));
 		$this->register_action('getSongs', array($this, 'getSongs'));
+		$this->register_action('getArtWork', array($this, 'getArtWork'));
 		$this->add_hook('startup', array($this, 'startup'));
 		$this->register_action('index', array($this, 'action'));
 	}
@@ -191,7 +192,7 @@ class ampache extends rcube_plugin
 				$item = $item['song'];
 				$class = ''; $unread = '';
 				$seconds = $item['time']; $hours = floor($seconds / 3600); $mins = floor($seconds / 60 % 60); $secs = floor($seconds % 60);
-				echo '		<tr id="ampSNG'.$item['self']['id'].'" class="message'.$class.'" data-art="'.$url.$item['art'].'">
+				echo '		<tr id="ampSNG'.$item['self']['id'].'" class="message'.$class.'" data-art="./?_task=ampache&_action=getArtWork&url='.$url.$item['art'].'">
 			<td class="selection">
 				<input type="checkbox" tabindex="-1">
 			</td>
@@ -217,6 +218,11 @@ class ampache extends rcube_plugin
 			}
 			echo '</tbody></table>';
 		}
+		exit;
+	}
+	function getArtWork(){
+		header("Content-Type: image/jpeg");
+		echo file_get_contents($_GET['url']);
 		exit;
 	}
 	/**
