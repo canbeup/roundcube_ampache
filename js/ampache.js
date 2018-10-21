@@ -1,4 +1,14 @@
 var ampache = {
+	previous: function(){
+		var id = $('#mailboxlist li.unread').prev('li');
+		if(id===undefined) return; // id = $('#mailboxlist li:last');
+		id.children('a').trigger('click');
+	},
+	next: function(){
+		var id = $('#mailboxlist li.unread').next('li');
+		if(id===undefined) return; // id = $('#mailboxlist li:first');
+		id.children('a').trigger('click');
+	},
 	load: {
 		folder: function(folder){
 			if(folder===undefined||folder===null){
@@ -30,6 +40,7 @@ var ampache = {
 		},
 		songs: function(){
 			$('#ampSNG' + locStore.get('ampache.player.last.id')).addClass('unread');
+			$('#ampSNG' + locStore.get('ampache.player.last.id')).addClass('selected');
 			$('#currentArtwork').attr('src', $('#ampSNG' + locStore.get('ampache.player.last.id')).data('art'));
 		}
 	}

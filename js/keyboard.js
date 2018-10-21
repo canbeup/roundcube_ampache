@@ -16,6 +16,9 @@ var keyboard = {
 				}
 			}else if(event.shiftKey){
 				switch(chCode){
+					case 38: ampache.previous(); break; //up
+					// case 39: if($('#slideshow').html()!=='') slideshow.next(1); else explorer.selection.move('right'); break; //right
+					case 40: ampache.next(); break; //down
 					// case 49: window.open(document.location.href); break; //1
 					default: valuetoreturn = true;
 				}

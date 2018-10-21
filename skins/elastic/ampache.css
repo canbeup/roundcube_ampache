@@ -1,12 +1,3 @@
-.listing.iconized tr.ampache>td.section:before{
-	content: "\f025"}
-/* @media screen and (max-width: 1024px){
-	#taskmenu .button-ampache{
-		display: none}} */
-/* @media screen and (min-width: 481px){
-	.content .header.ampache{
-		display: none!important}} */
-
 .toolbar a.button.macro:before{
 	content: "\f0d0"}
 .toolbar a.button.save:before{

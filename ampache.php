@@ -17,6 +17,11 @@ class ampache extends rcube_plugin
 			$this->add_hook('preferences_list', array($this, 'ampache_preferences_list'));
 			$this->add_hook('preferences_save', array($this, 'ampache_preferences_save'));
 		}
+		elseif($this->rc->task == 'ampache')
+		{
+			$skin_path = $this->local_skin_path();
+			$this->include_stylesheet($skin_path."/ampache.css");
+		}
 		$this->load_ui();
 		$this->register_task('ampache');
 		$this->register_action('getTree', array($this, 'getTree'));
@@ -154,9 +159,11 @@ class ampache extends rcube_plugin
 				// }else{
 				// 	$view_mode = 'all_articles';
 				// }
-				echo '			<li id="ampCAT'.$item['self']['id'].'" class="'.$class.'" role="treeitem" aria-level="1">
+				if($unread!==''){
+					echo '			<li id="ampCAT'.$item['self']['id'].'" class="'.$class.'" role="treeitem" aria-level="1">
 				<a data-type="folder" data-path="'.$path.$item['name'].'" onclick="ampache.load.songs(\''.$type.'_songs\', '.$item['self']['id'].'); return false;">'.$item['name'].$unread.'</a>
 			</li>';
+				}
 			}
 		}
 		exit;
@@ -319,7 +326,7 @@ class ampache extends rcube_plugin
 		{
 			$rcmail = rcmail::get_instance();
 			$url = rcube_utils::get_input_value('ampache_url', rcube_utils::INPUT_POST);
-			// if(substr($url, strlen($url) - 1)!='/') $url .= '/';
+			if(substr($url, strlen($url) - 1)=='/') $url .= substr($url, 0, strlen($url) - 1);
 			$username = rcube_utils::get_input_value('ampache_username', rcube_utils::INPUT_POST);
 			$passwd = rcube_utils::get_input_value('ampache_passwd', rcube_utils::INPUT_POST);
 			if($passwd == '') $passwd = $this->decrypt($this->rc->config->get('ampache_passwd'));
@@ -350,8 +357,6 @@ class ampache extends rcube_plugin
 	function load_ui()
 	{
 		$this->load_env();
-		$skin_path = $this->local_skin_path();
-		$this->include_stylesheet($skin_path."/ampache.css");
 	}
 	/**
 * Encrypt a passwort (key: IMAP-password)

@@ -379,7 +379,9 @@ class AmpacheApi
             if (!$this->XML_subTag) {
                 $this->XML_results[$this->XML_position][$this->XML_currentTag]['self'] = $attributes;
             } else {
-                $this->XML_results[$this->XML_position][$this->XML_currentTag][$this->XML_subTag]['self'] = $attributes;
+                if(isset($this->XML_results[$this->XML_position][$this->XML_currentTag][$this->XML_subTag]) && is_array($this->XML_results[$this->XML_position][$this->XML_currentTag][$this->XML_subTag])) {
+                    $this->XML_results[$this->XML_position][$this->XML_currentTag][$this->XML_subTag]['self'] = $attributes;
+                }
             }
         }
     } // start_element

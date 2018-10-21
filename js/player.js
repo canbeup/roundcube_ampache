@@ -6,6 +6,7 @@ var player = {
 		var url = '';
 		if(!isNaN(id)){
 			$('#ampSNG' + locStore.get('ampache.player.last.id')).removeClass('unread');
+			$('#ampSNG' + locStore.get('ampache.player.last.id')).removeClass('selected');
 			url = $('#ampSLNK' + id).attr('href');
 			locStore.set('ampache.player.last.id', id);
 			ampache.after.songs();
@@ -62,6 +63,7 @@ var player = {
 	},
 	notification: function(id){
 		if(Notification.permission === "granted"){
+			if($('#ampSLNK' + id + ' #title').html()===undefined) return;
 			var notification = new Notification($('#ampSLNK' + id + ' #title').html(), { icon: $('#currentArtwork').attr('src'), body: $('#ampSLNK' + id + ' #author').html() + "\n" + $('#ampSALB' + id).html() });
 			notification.onclick = function(){ this.close(); };
 		}
