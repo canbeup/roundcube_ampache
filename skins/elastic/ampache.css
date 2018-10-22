@@ -31,6 +31,10 @@
 
 #radio .quota-widget.pause .value{
 	background-color: #FF9A37}
+#radio .quota-widget .value.buffered{
+	background-color: #97dafb}
+#radio .quota-widget .value.seek{
+	margin-top: -15px}
 
 #folderlist-content #countdown{
 	position:absolute;

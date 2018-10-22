@@ -52,8 +52,22 @@ var player = {
 		locStore.set('ampache.player.last.seek', player.audio[player.index].currentTime);
 		var per = (player.audio[player.index].currentTime / player.audio[player.index].duration) * 100;
 		$("#radio .bar .value").css('width', per + '%');
+		player.loadupdate();
 		// $("#radio .bar .value").attr("max", player.audio[player.index].duration);
 		// $('#radio .bar .value').val(player.audio[player.index].currentTime);
+	},
+	loadupdate: function(){
+		var range = 0;
+		var bf = player.audio[player.index].buffered;
+		var time = player.audio[player.index].currentTime;
+		if(bf.length===0) return;
+		while(!(bf.start(range) <= time && time <= bf.end(range))) range += 1;
+		var loadStartPercentage = bf.start(range);
+		var loadEndPercentage = bf.end(range);
+		var loadPercentage = loadEndPercentage - loadStartPercentage;
+		var per = (bf.end(range) / player.audio[player.index].duration) * 100;
+		$("#radio .bar .value.buffered").css('width', per + '%');
+		// document.title = loadStartPercentage + " " + loadEndPercentage + " " + player.audio[player.index].duration;
 	},
 	timeset: function(time){
 		player.audio[player.index].currentTime = time;
@@ -76,6 +90,8 @@ $(function(){
 	player.audio[1] = document.getElementById("audioplayer2");
 	player.audio[0].addEventListener('timeupdate',function(){ player.timeupdate(); });
 	player.audio[1].addEventListener('timeupdate',function(){ player.timeupdate(); });
+	player.audio[0].addEventListener('progress',function(){ player.loadupdate(); });
+	player.audio[1].addEventListener('progress',function(){ player.loadupdate(); });
 	player.audio[0].addEventListener('ended',function(e){ player.next(); });
 	player.audio[1].addEventListener('ended',function(e){ player.next(); });
 	$('#radio .quota-widget:before').on('click', function(){ player.toggle(); });
