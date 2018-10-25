@@ -7,9 +7,9 @@ nothing more :)
 **This plugins work only with RoundCube 1.4+ and with elastic skin**
 
 #ToDO
-At the moment, it work but not without bugs ...
-Added some functionalities to add, remove and custom playlist
-And, indeed remove all the menu from the mail template ...
+> Added some functionalities to add, remove and custom playlist
+
+> And, indeed remove all the menu from the mail template ...
 
 # Screenshots
 ![roundcube_ampache Mail](screenshots/Main.png)
