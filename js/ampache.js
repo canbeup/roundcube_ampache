@@ -44,7 +44,7 @@ var ampache = {
       $('#ampSNG' + locStore.get('ampache.player.last.id')).addClass('selected');
       $('#currentArtwork').attr('src', $('#ampSNG' + locStore.get('ampache.player.last.id')).data('art'));
       ampache.scrollToElement(document.getElementById('ampSNG' + locStore.get('ampache.player.last.id')), document.getElementById('messagelist-content'));
-    },
+    }
   },
   getAverageRGB: function(imgEl){
     var blockSize = 5,
@@ -71,7 +71,21 @@ var ampache = {
       return defaultRGB;
     }
     length = data.data.length;
+    var colorChange = false, lastColor = '';
     while((i += blockSize * 4) < length){
+      if(i<width&&!colorChange){
+        if(lastColor===''){
+          lastColor = data.data[i] + '' + data.data[i+1] + '' + data.data[i+2];
+        }else if(lastColor!==data.data[i] + '' + data.data[i+1] + '' + data.data[i+2]){
+          colorChange = true;
+        }
+      }else if(!colorChange){
+        rgb.r += data.data[i];
+        rgb.g += data.data[i+1];
+        rgb.b += data.data[i+2];
+        $(canvas).remove();
+        return rgb;
+      }
       ++count;
       rgb.r += data.data[i];
       rgb.g += data.data[i+1];

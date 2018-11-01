@@ -63,9 +63,9 @@ var player = {
         player.audio[player.index].volume = (player.audio[player.index].duration - player.audio[player.index].currentTime) / 10;
         player.audio[player.ondex()].volume = 1 - ((player.audio[player.index].duration - player.audio[player.index].currentTime) / 10);
       }else{
-        player.crossfade = true;
         player.audio[player.ondex()].volume = 0;
         player.next(player.ondex());
+        player.crossfade = true;
       }
     }
   },
@@ -80,16 +80,16 @@ var player = {
     }
   },
   loadupdate: function(index){
-    if(index!=player.index) return;
+    // if(index!=player.index) return;
     var range = 0;
-    var bf = player.audio[index].buffered;
-    var time = player.audio[index].currentTime;
+    var bf = player.audio[player.index].buffered;
+    var time = player.audio[player.index].currentTime;
     if(bf.length===0) return;
-    while(!(bf.start(range) <= time && time <= bf.end(range))) range += 1;
+    else if(bf.length>1) while(!(bf.start(range) <= time && time <= bf.end(range))) range += 1;
     var loadStartPercentage = bf.start(range);
     var loadEndPercentage = bf.end(range);
     var loadPercentage = loadEndPercentage - loadStartPercentage;
-    var per = (bf.end(range) / player.audio[index].duration) * 100;
+    var per = (bf.end(range) / player.audio[player.index].duration) * 100;
     $("#radio .bar .value.buffered").css('width', per + '%');
   },
   timeset: function(time){
