@@ -13,7 +13,7 @@ var ampache = {
     folder: function(folder){
       if(folder===undefined||folder===null){
         $('#mailboxlist').load('./?_task=ampache&_action=getTree');
-        locStore.set('ampache.last.folder', null);
+        locStore.unset('ampache.last.folder');
       }else{
         $('#mailboxlist').load('./?_task=ampache&_action=getFolder&folder=' + folder, function(){ ampache.after.folder(); });
         locStore.set('ampache.last.folder', folder);
@@ -37,11 +37,13 @@ var ampache = {
     folder: function(){
       $('#ampCAT' + locStore.get('ampache.last.filter')).addClass('unread');
       $('#ampCAT' + locStore.get('ampache.last.filter')).addClass('selected');
+      ampache.scrollToElement(document.getElementById('ampCAT' + locStore.get('ampache.last.filter')), document.getElementById('folderlist-content'));
     },
     songs: function(){
       $('#ampSNG' + locStore.get('ampache.player.last.id')).addClass('unread');
       $('#ampSNG' + locStore.get('ampache.player.last.id')).addClass('selected');
       $('#currentArtwork').attr('src', $('#ampSNG' + locStore.get('ampache.player.last.id')).data('art'));
+      ampache.scrollToElement(document.getElementById('ampSNG' + locStore.get('ampache.player.last.id')), document.getElementById('messagelist-content'));
     },
   },
   getAverageRGB: function(imgEl){
@@ -55,7 +57,6 @@ var ampache = {
         rgb = {r:0,g:0,b:0},
         count = 0;
     if(!context){
-      alert(1);
       $(canvas).remove();
       return defaultRGB;
     }
@@ -81,6 +82,18 @@ var ampache = {
     rgb.b = ~~(rgb.b/count);
     $(canvas).remove();
     return rgb;
+  },
+  scrollToElement: function(element, container){
+    if(element===undefined || element===null) return;
+    if(element.offsetTop < container.scrollTop){
+      container.scrollTop = element.offsetTop;
+    }else{
+      var offsetBottom = element.offsetTop + element.offsetHeight;
+      var scrollBottom = container.scrollTop + container.offsetHeight;
+      if(offsetBottom > scrollBottom){
+        container.scrollTop = offsetBottom - container.offsetHeight;
+      }
+    }
   }
 };
 

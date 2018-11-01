@@ -8,6 +8,7 @@ var player = {
     else return 0;
   },
   load: function(id, index){
+    if(index===undefined) index = player.index;
     var url = '';
     if(!isNaN(id)){
       $('#ampSNG' + locStore.get('ampache.player.last.id')).removeClass('unread');
@@ -26,6 +27,7 @@ var player = {
     if(index===undefined) index = player.index;
     var id = $('#messagelist-content tr.unread').next('tr').attr('id');
     if(id===undefined) id = $('#messagelist-content tbody tr:first').attr('id');
+    if(id===undefined) return;
     id = id.substring(6);
     player.load(id, index);
   },
@@ -35,6 +37,7 @@ var player = {
     }else{
       var id = $('#messagelist-content tr.unread').prev('tr').attr('id');
       if(id===undefined) id = $('#messagelist-content tr:last').attr('id');
+      if(id===undefined) return;
       id = id.substring(6);
       player.load(id, player.index);
     }
@@ -88,7 +91,6 @@ var player = {
     var loadPercentage = loadEndPercentage - loadStartPercentage;
     var per = (bf.end(range) / player.audio[index].duration) * 100;
     $("#radio .bar .value.buffered").css('width', per + '%');
-    // document.title = loadStartPercentage + " " + loadEndPercentage + " " + player.audio[index].duration;
   },
   timeset: function(time){
     player.audio[player.index].currentTime = time;
@@ -102,8 +104,7 @@ var player = {
       var notification = new Notification($('#ampSLNK' + id + ' #title').html(), { icon: $('#currentArtwork').attr('src'), body: $('#ampSLNK' + id + ' #author').html() + "\n" + $('#ampSALB' + id).html() });
       notification.onclick = function(){ this.close(); };
     }
-  },
-  asnotified: true
+  }
 };
 
 $(function(){
