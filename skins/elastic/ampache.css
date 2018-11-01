@@ -1,59 +1,59 @@
 .toolbar a.button.macro:before{
-	content: "\f0d0"}
+  content: "\f0d0"}
 .toolbar a.button.save:before{
-	content: "\f0c7"}
+  content: "\f0c7"}
 
 .message:hover #flagicnrcmrowOTE:before{
-	content: "\f005"}
+  content: "\f005"}
 .messagelist td.flags>span.flag{
-	margin-left: 8px}
+  margin-left: 8px}
 
 .messagelist .message.unread td.subject span.msgicon.status:before{
-	color: #ffd452}
+  color: #ffd452}
 .messagelist td.subject span.msgicon.submit.status:before{
-	color: #ff5252}
+  color: #ff5252}
 
 .folderlist li.mailbox.selected .unreadcount{
-	background: #FF9A37}
+  background: #FF9A37}
 
 .content .iframe-wrapper img{
-	width: 300px;
-	height: 300px;
-	position: relative;
-	top: calc(50% - 150px);
-	left: calc(50% - 150px)}
+  width: 300px;
+  height: 300px;
+  position: relative;
+  top: calc(50% - 150px);
+  left: calc(50% - 150px)}
 
 #radio .quota-widget:before{
-	content: "\f28b"}
+  content: "\f28b"}
 
 #radio .quota-widget.pause:before{
-	content: "\f144"}
+  content: "\f144"}
 
 #radio .quota-widget.pause .value{
-	background-color: #FF9A37}
+  background-color: #FF9A37}
 #radio .quota-widget .value.buffered{
-	background-color: #97dafb}
+  background-color: #97dafb}
 #radio .quota-widget .value.seek{
-	margin-top: -15px}
+  margin-top: -15px}
 
 #folderlist-content #countdown{
-	position:absolute;
-	bottom:0;
-	right:0}
+  position:absolute;
+  bottom:0;
+  right:0}
 
 #amFLSongs>a:before{
-	content: "\f016"}
+  content: "\f016"}
 #amFLAlbums>a:before{
-	content: "\f328"}
+  content: "\f328"}
 #amFLArtists>a:before{
-	content: "\f007"}
+  content: "\f007"}
 #amFLPlaylists>a:before{
-	content: "\f0f6"}
+  content: "\f0f6"}
 #amFLFavourites>a:before{
-	content: "\f024"}
+  content: "\f024"}
 #amFLTags>a:before{
-	content: "\f1c7"}
+  content: "\f1c7"}
 #amFLLast>a:before{
-	content: "\f06e"}
+  content: "\f06e"}
 #amFLRecent>a:before{
-	content: "\f045"}
+  content: "\f045"}
