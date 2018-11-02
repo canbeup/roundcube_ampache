@@ -1,0 +1,7 @@
+#taskmenu a.ampache:before{
+  content:"\f025"}
+@media screen and (min-width: 481px){
+  #taskmenu .button-ampache.selected.button{
+    color:#fff900}}
+.listing.iconized tr.ampache>td.section:before{
+  content: "\f025"}

@@ -20,7 +20,7 @@ class ampache extends rcube_plugin
     elseif($this->rc->task == 'ampache')
     {
       $skin_path = $this->local_skin_path();
-      $this->include_stylesheet($skin_path."/ampache.css");
+      $this->include_stylesheet($skin_path."/css/app.css");
     }
     $this->load_ui();
     $this->register_task('ampache');
@@ -49,7 +49,8 @@ class ampache extends rcube_plugin
         'label'      => 'ampache.ampache',
         'type'       => 'link',
       ), 'taskbar');
-      $this->include_stylesheet('ampache.css');
+      $skin_path = $this->local_skin_path();
+      $this->include_stylesheet($skin_path.'/css/icon.css');
     }
   }
   /**
@@ -242,10 +243,11 @@ class ampache extends rcube_plugin
       $url = str_replace('https://', '', $url);
       $header_title = $this->rc->config->get('ampache_username').'@'.$url;
       $rcmail->output->set_env('ampache_header_title', $header_title);
-      $this->include_script('js/ampache.js');
-      $this->include_script('js/locStore.js');
-      $this->include_script('js/keyboard.js');
-      $this->include_script('js/player.js');
+      $skin_path = $this->local_skin_path();
+      $this->include_script($skin_path.'/js/ampache.js');
+      $this->include_script($skin_path.'/js/locStore.js');
+      $this->include_script($skin_path.'/js/keyboard.js');
+      $this->include_script($skin_path.'/js/player.js');
       $rcmail->output->set_pagetitle($this->gettext('ampache'));
       $rcmail->output->add_handlers(array('ampachecontent' => array($this, 'content')));
       $rcmail->output->send('ampache.ampache');
