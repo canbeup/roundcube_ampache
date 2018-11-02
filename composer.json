@@ -1,0 +1,31 @@
+{
+    "name": "roundcube/ampache",
+    "type": "roundcube-plugin",
+    "description": "Ampache adapter for connecting to Ampache on another server",
+    "keywords": ["ampache","music","api"],
+    "homepage": "https://github.com/gloony/roundcube_ampache",
+    "license": "GPL-3.0",
+    "version": "1-beta",
+    "authors": [
+        {
+            "name": "David Chardonnens",
+            "email": "david@gloony.me",
+            "homepage": "https://gloony.me",
+            "role": "Developer"
+        }
+    ],
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "git://github.com/gloony/roundcube_ampache.git"
+        }
+    ],
+    "require": {
+        "php": ">=5.6.18"
+    },
+    "extra": {
+        "roundcube": {
+            "min-version": "1.4.0"
+        }
+    }
+}

@@ -123,18 +123,18 @@ class ampache extends rcube_plugin
 <li id="amFLPlaylists" class="mailbox" role="treeitem" aria-level="1">
   <a href="./?_task=ampache&amp;list=playlists" data-type="folder" data-path="music/gloony/" onclick="ampache.load.folder('playlists'); return false;">Playlists</a>
 </li>
-<li id="amFLFavourites" class="mailbox" role="treeitem" aria-level="1">
+<!-- <li id="amFLFavourites" class="mailbox" role="treeitem" aria-level="1">
   <a href="./?_task=ampache&amp;list=favourites" data-type="folder" data-path="music/gloony/" onclick="return false;">Favourites</a>
-</li>
+</li> -->
 <li id="amFLTags" class="mailbox" role="treeitem" aria-level="1">
   <a href="./?_task=ampache&amp;list=genre" data-type="folder" data-path="music/gloony/" onclick="ampache.load.folder('tags'); return false;">Genre</a>
 </li>
-<li id="amFLLast" class="mailbox" role="treeitem" aria-level="1">
+<!-- <li id="amFLLast" class="mailbox" role="treeitem" aria-level="1">
   <a href="./?_task=ampache&amp;list=last" data-type="folder" data-path="music/gloony/" onclick="return false;">Last played</a>
-</li>
-<li id="amFLRecent" class="mailbox" role="treeitem" aria-level="1">
+</li> -->
+<!-- <li id="amFLRecent" class="mailbox" role="treeitem" aria-level="1">
   <a href="./?_task=ampache&amp;list=recent" data-type="folder" data-path="music/gloony/" onclick="return false;">Recently Added</a>
-</li>
+</li> -->
 <?php
     }
     exit;

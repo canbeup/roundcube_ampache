@@ -5,8 +5,6 @@
 
 .message:hover #flagicnrcmrowOTE:before{
   content: "\f005"}
-.messagelist td.flags>span.flag{
-  margin-left: 8px}
 
 .messagelist .message.unread td.subject span.msgicon.status:before{
   color: #ffd452}
@@ -22,6 +20,9 @@
   position: relative;
   top: calc(50% - 150px);
   left: calc(50% - 150px)}
+
+#radio .quota-widget{
+  padding: .6rem 1rem}
 
 #radio .quota-widget:before{
   content: "\f28b"}
@@ -42,18 +43,23 @@
   right:0}
 
 #amFLSongs>a:before{
-  content: "\f016"}
+  font-weight: 600;
+  content: "\f001"}
 #amFLAlbums>a:before{
-  content: "\f328"}
+  content: "\f192"}
 #amFLArtists>a:before{
   content: "\f007"}
 #amFLPlaylists>a:before{
-  content: "\f0f6"}
+  font-weight: 600;
+  content: "\f15c"}
 #amFLFavourites>a:before{
-  content: "\f024"}
+  font-weight: 600;
+  content: "\f005"}
 #amFLTags>a:before{
-  content: "\f1c7"}
+  font-weight: 600;
+  content: "\f02b"}
 #amFLLast>a:before{
-  content: "\f06e"}
+  content: "\f017"}
 #amFLRecent>a:before{
-  content: "\f045"}
+  font-weight: 600;
+  content: "\f01e"}
