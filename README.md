@@ -7,7 +7,7 @@ Embed your Ampache account into your RoundCube (used the Ampache API)
 # Installation
 
 ```
-You need a fully functional TTRSS server
+You need a fully functional Ampache server
 Install these content into your_roundcube_root/plugins/ampache/
 Configure your config.inc.php to add this plugin
 Go to your settings into your RoundCube instance and add a server
