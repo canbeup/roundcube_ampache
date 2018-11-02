@@ -51,41 +51,25 @@ var ampache = {
         defaultRGB = {r:0,g:0,b:0},
         canvas = document.createElement('canvas'),
         context = canvas.getContext && canvas.getContext('2d'),
-        data, width, height,
+        data, width,
         i = -4,
-        length,
         rgb = {r:0,g:0,b:0},
         count = 0;
     if(!context){
       $(canvas).remove();
       return defaultRGB;
     }
-    height = canvas.height = imgEl.naturalHeight || imgEl.offsetHeight || imgEl.height;
     width = canvas.width = imgEl.naturalWidth || imgEl.offsetWidth || imgEl.width;
     context.drawImage(imgEl, 0, 0);
     try{
-      data = context.getImageData(0, 0, width, height);
+      data = context.getImageData(0, 0, width, 1);
     }catch(e){
       alert(e);
       $(canvas).remove();
       return defaultRGB;
     }
-    length = data.data.length;
     var colorChange = false, lastColor = '';
-    while((i += blockSize * 4) < length){
-      if(i<width&&!colorChange){
-        if(lastColor===''){
-          lastColor = data.data[i] + '' + data.data[i+1] + '' + data.data[i+2];
-        }else if(lastColor!==data.data[i] + '' + data.data[i+1] + '' + data.data[i+2]){
-          colorChange = true;
-        }
-      }else if(!colorChange){
-        rgb.r += data.data[i];
-        rgb.g += data.data[i+1];
-        rgb.b += data.data[i+2];
-        $(canvas).remove();
-        return rgb;
-      }
+    while((i += blockSize * 4) < width){
       ++count;
       rgb.r += data.data[i];
       rgb.g += data.data[i+1];
