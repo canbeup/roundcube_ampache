@@ -1,15 +1,14 @@
 # roundcube_ampache
 Embed your ampache account into your RoundCube (used the ampache API)
 
-Install into plugins directory, go to your settings into roundcube and set your parameters
-nothing more :)
+You need a fully working ampache server. Extract all these files into your plugins directory (into a dir named ampache). And add the plugins into RoundCube config file.
 
 **This plugins work only with RoundCube 1.4+ and with elastic skin**
 
 #ToDO
 > Added some functionalities to add, remove and custom playlist
 
-> And, indeed remove all the menu from the mail template ...
+> Optimization
 
 # Screenshots
 ![roundcube_ampache Mail](screenshots/Main.png)
